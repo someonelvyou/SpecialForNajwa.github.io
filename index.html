@@ -35,8 +35,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 24px;
-            transition: opacity 2s ease-out;
+            font-size: 20px;
+            transition: opacity 3s ease-out;
             z-index: 1000;
         }
         h1 { font-size: 36px; margin-bottom: 20px; }
@@ -69,14 +69,26 @@
             background-color: #ff4e50; color: white;
         }
         
+        /* Store Effect */
+        .store-text {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff4e50, #ff6b81);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 78, 80, 0.8); }
+            100% { text-shadow: 0 0 15px rgba(255, 78, 80, 1); }
+        }
+        
         /* Responsiveness */
         @media (max-width: 600px) {
             h1 { font-size: 28px; }
             p { font-size: 16px; }
             button { font-size: 14px; padding: 10px 20px; }
         }
-        
-        /* Falling Love Animation */
         canvas {
             position: fixed;
             top: 0;
@@ -90,22 +102,21 @@
 </head>
 <body>
     <canvas id="loveCanvas"></canvas>
-    <div class="loading-screen" id="loadingScreen">bentar ay..kalo bckgroudnya hilang berarti error huhu</div>
-    
+    <div class="loading-screen" id="loadingScreen">bentar ay..kalo gada backgroundnya berarti error huhu</div>
     <div id="page1">
         <div class="gif-container">
             <img src="animasi.gif" alt="Valentine GIF" width="150">
         </div>
-        <h1>Selamat Hari Valentine! ❤️</h1>
-        <audio id="valentineMusic" src="musicc.mp3"></audio>
+        <h1 class="store-text">Selamat Hari Valentine! ❤️</h1>
+        <audio id="valentineMusic" src="musik.mp3"></audio>
         <button class="play-button" onclick="playMusic()">Play Music</button>
         <button class="next-button" onclick="nextPage()"> Lanjut &#8594;</button>
     </div>
     
     <div id="page2" class="hidden">
-        <h1>Untuk Awa yang cakepp ❤️</h1>
+        <h1 class="store-text">Untuk Awa yang cakepp ❤️</h1>
         <div class="message-box">
-            <p>Haloooo sayangku… hehe maaf ya mungkin aku ga seromantis pasangan lain aku cuman bisa buatin ini untuk kamu hihih, meskipun kita belum ada hubungan yang resmi tapi aku selalu belajar cara jadi pasangan yang baik buat kamu, aku udah komitmen ke diri aku sendiri klo kamu she's the one ay, aku nyaman sama kamu rasanya sayangg bgtt ada kamu aku jadi belajar lagi cara ngetreat cwe hihi, aku masih banyak banget kurangnya ay, mungkin aku belum bisa sesuai sama ekspektasimu ay tapi aku selalu berusaha kok buat jdi pasangan yang baik, ajari aku untuk jadi pasangan yang kamu mau yaaa</p>
+            <p>Haloooo sayangku… hehe maaf ya mungkin aku ga seromantis pasangan lain aku cuman bisa buatin ini untuk kamu hihih, meskipun kita belum pernah ketemu yang bener bener ketemu ayy aku udah selalu belajar cara jadi pasangan yang baik buat kamu, aku duah punya plan kedepanya bareng kamu, aku udah komitmen ke diri aku sendiri klo kamu she's the one ay, aku nyaman sama kamu rasanya sayangg bgtt ada kamu aku jadi belajar lagi cara ngetreat cwe hihi, aku masih banyak banget kurangnya ay, mungkin aku belum bisa sesuai sama ekspektasimu ay tapi aku selalu berusaha kok buat jdi pasangan yang baik, ajari aku untuk jadi pasangan yang kamu mau yaaa</p>
             <p>Aku cuman mau ngucapin makasih buat kamu udah mau jadi rumah buat aku, udah mau jadi tempat aku ngeluh, tempat aku cerita, tempat aku ngomel heheh, makasih udah mau welcome sama aku yang masih banyak kurangnya ini, aku harap kedepanya kita bisa lebih baik yaaa, semoga kita selalu bisa jaga kepercayaan yang sma sama kita kasih ke satu sama lain, mungkin kamu masih banyak trust issue sm sama aku ya? Gapapa kok aku ngerti, pesenku ke kamu cuma… tetep sayang ke aku ya hhihih tetep care ke aku, jangan pernah bosen sama aku yaa sayang, ayo kita saling support buat grow up bareng buat kedepanya, pasti kedepanya namanya problem pasti dateng ayy, aku minta semua yang kita hadapin kita dapai dengan kepala dingin yaa kita obrolin kita cari solusinya bareng bareng udah si itu aja ayy, I LOVE YOUUUUUUUU</p>
             <p>Dari cwomu yang paling lucu imut dan menggemaskan</p>
             <p><strong>Galih.</strong></p>
@@ -115,38 +126,11 @@
     </div>
     
     <script>
-        let musicPlayed = false;
-        function playMusic() {
-            let music = document.getElementById("valentineMusic");
-            if (!musicPlayed) {
-                music.play();
-                musicPlayed = true;
-            }
-        }
-        
-        function nextPage() {
-            document.getElementById('loadingScreen').style.opacity = '1';
-            setTimeout(() => {
-                document.getElementById('page1').classList.add('hidden');
-                document.getElementById('page2').classList.remove('hidden');
-                document.getElementById('loadingScreen').style.opacity = '0';
-            }, 1000);
-        }
-        
-        function goBack() {
-            document.getElementById('loadingScreen').style.opacity = '1';
-            setTimeout(() => {
-                document.getElementById('page2').classList.add('hidden');
-                document.getElementById('page1').classList.remove('hidden');
-                document.getElementById('loadingScreen').style.opacity = '0';
-            }, 1000);
-        }
-        
-        window.onload = function() {
+                window.onload = function() {
             setTimeout(() => {
                 document.getElementById('loadingScreen').style.opacity = '0';
                 setTimeout(() => document.getElementById('loadingScreen').style.display = 'none', 1000);
-            }, 1000);
+            }, 2000);
         };
         
         // Falling Love Effect
@@ -189,6 +173,20 @@
         }
         createHearts();
         animateHearts();
+        function playMusic() {
+            let music = document.getElementById("valentineMusic");
+            music.play();
+        }
+        
+        function nextPage() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+        
+        function goBack() {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page1').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
